@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-aplicacion-node2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mi-aplicacion-node2
+  template:
+    metadata:
+      labels:
+        app: mi-aplicacion-node2
+    spec:
+      containers:
+      - name: mi-aplicacion-node2
+        image: anogueraru/mi-aplicacion-node2:v2
+        ports:
+        - containerPort: 5000

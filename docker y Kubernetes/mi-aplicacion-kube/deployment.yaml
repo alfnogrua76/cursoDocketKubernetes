@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-aplicacion-kube
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mi-aplicacion-kube
+  template:
+    metadata:
+      labels:
+        app: mi-aplicacion-kube
+    spec:
+      containers:
+      - name: mi-aplicacion-kube
+        image: anogueraru/mi-aplicacion-kube:v1
+        ports:
+        - containerPort: 3000

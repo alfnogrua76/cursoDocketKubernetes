@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mi-aplicacion-node
+spec:
+  type: LoadBalancer # Esto define que es un servicio de tipo Balanceador
+  selector:
+    app: mi-aplicacion-node # Selecciona el deployment por su etiqueta ->mi-aplicacion-node 
+  ports:
+    - protocol: TCP
+      port: 80 # Puerto del servicio global de kubernetes
+      targetPort: 80 # Puerto del contenedor
+      nodePort: 30080 # Puerto del nodo, se puede omitir y se genera uno automaticamente

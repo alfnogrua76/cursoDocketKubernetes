@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-aplicacion-node # NOmbre del deployment
+  #anotations:
+    #traefik.ingress.kubernetes.io/router.entrypoints: web # Anotaciones para el ingress
+    #minikube addons enable ingress # Habilita el addon de ingress de minikube
+    #minikube tunnel # Habilita el tunnel de minikube para el ingress
+    #nginx.ingress.kubernetes.io/rewrite-target: / # Anotaciones para el ingress
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mi-aplicacion-node
+  template:
+    metadata:
+      labels:
+        app: mi-aplicacion-node
+    spec:
+      containers:
+      - name: mi-aplicacion-node # Mi contenedor
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+
+# kuberctl apply -f deployment.yaml
+# kubectl get pods # Verifica que el pod se haya creado correctamente
+# kubectl get deployments # Verifica que el deployment se haya creado correctamente   
+# kubectl get services # Verifica que el servicio se haya creado correctamente
+# kubectl describe services mi-aplicacion-node # Verifica que el servicio se haya creado correctamente    
+# kubectl describe deployments mi-aplicacion-node # Verifica que el deployment se haya creado correctamente
+# kubectl delete -f deployment.yaml # Elimina el deployment y el servicio
+# kubectl delete deployment mi-aplicacion-node # Elimina el deployment
+# kubectl delete service mi-aplicacion-node # Elimina el servicio 
+# kubectl delete pod mi-aplicacion-node # Elimina el pod
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 # Elimina el pod por su nombre
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force # Elimina el pod por su nombre sin esperar el tiempo de gracia
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system # Elimina el pod por su nombre sin esperar el tiempo de gracia en el namespace kube-system
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en el namespace kube-system
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes --all-networks # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes --all-networks --all-namespaces # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes --all-networks --all-namespaces --all # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces y todos los pods
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes --all-networks --all-namespaces --all --all # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces y todos los pods y todos los contenedores
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes --all-networks --all-namespaces --all --all --all # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes --all-networks --all-namespaces --all --all --all # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes --all-networks --all-namespaces --all --all --all --all # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces
+# kubectl delete pod mi-aplicacion-node-7c8f4b5c6d-7j8k9 --grace-period=0 --force -n kube-system --all --all-namespaces --all --all-containers --all-volumes --all-networks --all-namespaces --all --all --all --all # Elimina todos los pods por su nombre sin esperar el tiempo de gracia en todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces y todos los pods y todos los contenedores y todos los volúmenes y todas las redes y todos los namespaces y todos los pods

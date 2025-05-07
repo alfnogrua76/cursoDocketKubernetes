@@ -1,0 +1,20 @@
+ # daemonset.yaml
+ apiVersion: apps/v1
+ kind: DaemonSet
+ metadata:
+  name: mi-daemonset
+  namespace: mi-namespace
+ spec:
+  selector:
+    matchLabels:
+      app: mi-app-nodejs
+  template:
+    metadata:
+      labels:
+        app: mi-app-nodejs
+    spec:
+      containers:
+      - name: mi-app-nodejs
+        image: nginx:latest
+        ports:
+        - containerPort: 30090 # Puerto del contenedor

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress # Tipo de recurso
+metadata:
+  name: mi-apliccion-node-ingress #  NOmbre del deployment
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web # Anotaciones para el ingress
+    #minikube addons enable ingress # Habilita el addon de ingress de minikube
+    #minikube tunnel # Habilita el tunnel de minikube para el ingress
+    #nginx.ingress.kubernetes.io/rewrite-target: / # Anotaciones para el ingress
+spec:
+  rules:
+  - host: miapp.local # Dominio de la aplicacion
+    http:
+      paths:
+      - path: / # Ruta de la aplicacion
+        pathType: Prefix # Tipo de ruta
+        backend:
+          service:
+            name: mi-aplicacion-node # Nombre del servicio
+            port:
+              number: 80 # Puerto del servicio
+ 

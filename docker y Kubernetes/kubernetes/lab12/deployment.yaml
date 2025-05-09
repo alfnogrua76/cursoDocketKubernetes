@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: practica12-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: practica12
+  template:
+    metadata:
+      labels:
+        app: practica12
+    spec:
+      containers:
+        - name: practica12
+          image: anogueraru/practica12:latest
+          ports:
+            - containerPort: 3000
